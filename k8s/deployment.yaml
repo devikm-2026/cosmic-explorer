@@ -4,17 +4,23 @@ metadata:
   name: cosmic-explorer
 spec:
   replicas: 1
+
   selector:
     matchLabels:
       app: cosmic-explorer
+
   template:
     metadata:
       labels:
         app: cosmic-explorer
+
     spec:
+      imagePullSecrets:
+        - name: jfrog-secret
+
       containers:
         - name: cosmic-explorer
-          image: cosmic-explorer:v1
-          imagePullPolicy: IfNotPresent
+          image: trial7uwzzo.jfrog.io/docker-trial/cosmic-explorer:v1
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
