@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cosmic-explorer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cosmic-explorer
+  template:
+    metadata:
+      labels:
+        app: cosmic-explorer
+    spec:
+      containers:
+        - name: cosmic-explorer
+          image: cosmic-explorer:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
